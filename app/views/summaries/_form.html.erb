@@ -1,0 +1,47 @@
+<%= form_for(summary) do |f| %>
+  <% if summary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(summary.errors.count, "error") %> prohibited this summary from being saved:</h2>
+
+      <ul>
+      <% summary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %>
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="field">
+    <%= f.label :resolution %>
+    <%= f.number_field :resolution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %>
+    <%= f.number_field :type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :starting_day %>
+    <%= f.datetime_select :starting_day %>
+  </div>
+
+  <div class="field">
+    <%= f.label :close_day %>
+    <%= f.datetime_select :close_day %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

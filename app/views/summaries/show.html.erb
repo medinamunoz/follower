@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @summary.description %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @summary.note %>
+</p>
+
+<p>
+  <strong>Resolution:</strong>
+  <%= @summary.resolution %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @summary.type %>
+</p>
+
+<p>
+  <strong>Starting day:</strong>
+  <%= @summary.starting_day %>
+</p>
+
+<p>
+  <strong>Close day:</strong>
+  <%= @summary.close_day %>
+</p>
+
+<%= link_to 'Edit', edit_summary_path(@summary) %> |
+<%= link_to 'Back', summaries_path %>
