@@ -5,6 +5,7 @@ class SummariesController < ApplicationController
   # GET /summaries.json
   def index
     @summaries = Summary.all
+    @can_create = current_user.try(:department_name) == "Jurídica"
   end
 
   # GET /summaries/1
@@ -15,6 +16,8 @@ class SummariesController < ApplicationController
   # GET /summaries/new
   def new
     @summary = Summary.new
+    @summary_user = SummaryUser.new
+    @user = current_user
   end
 
   # GET /summaries/1/edit
@@ -69,6 +72,6 @@ class SummariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def summary_params
-      params.require(:summary).permit(:description, :note, :resolution, :type, :starting_day, :close_day)
+      params.require(:summary).permit(:description, :note, :resolution, :starting_day, :close_day, summary_users_attributes: [:id, :user_id, :_destroy])
     end
 end

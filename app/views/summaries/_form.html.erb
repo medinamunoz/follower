@@ -1,4 +1,5 @@
-<%= form_for(summary) do |f| %>
+<%= form_for(setup_summary(@summary), 
+    :url => @summary.persisted? ? summary_path : summaries_path) do |f| %>
   <% if summary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(summary.errors.count, "error") %> prohibited this summary from being saved:</h2>
@@ -26,10 +27,6 @@
     <%= f.number_field :resolution %>
   </div>
 
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.number_field :type %>
-  </div>
 
   <div class="field">
     <%= f.label :starting_day %>
@@ -40,6 +37,10 @@
     <%= f.label :close_day %>
     <%= f.datetime_select :close_day %>
   </div>
+
+  <%=  f.fields_for :summary_users do |builder| %>
+    <%= render "summary_user_fields", :f => builder%>
+    <% end %>
 
   <div class="actions">
     <%= f.submit %>

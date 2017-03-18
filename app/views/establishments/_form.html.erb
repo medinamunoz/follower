@@ -16,9 +16,13 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :city_id %>
-    <%= f.text_field :city_id %>
+
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :Ciudad %>
+      <%= f.collection_select :city_id, City.all, :id, :name %>
+    </div>
   </div>
 
   <div class="actions">

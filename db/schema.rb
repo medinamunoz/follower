@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317185924) do
+ActiveRecord::Schema.define(version: 20170318002918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20170317185924) do
     t.string   "description"
     t.text     "note"
     t.integer  "resolution"
-    t.integer  "type"
     t.datetime "starting_day"
     t.datetime "close_day"
     t.datetime "created_at",   null: false
@@ -65,10 +64,9 @@ ActiveRecord::Schema.define(version: 20170317185924) do
 
   create_table "summary_phases", force: :cascade do |t|
     t.integer  "summary_id"
-    t.integer  "phase_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["phase_id"], name: "index_summary_phases_on_phase_id", using: :btree
+    t.integer  "phase"
     t.index ["summary_id"], name: "index_summary_phases_on_summary_id", using: :btree
   end
 
@@ -77,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170317185924) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "type"
     t.index ["summary_id"], name: "index_summary_users_on_summary_id", using: :btree
     t.index ["user_id"], name: "index_summary_users_on_user_id", using: :btree
   end
@@ -107,7 +106,6 @@ ActiveRecord::Schema.define(version: 20170317185924) do
   add_foreign_key "departments", "establishments"
   add_foreign_key "documents", "summary_phases"
   add_foreign_key "establishments", "cities"
-  add_foreign_key "summary_phases", "phases"
   add_foreign_key "summary_phases", "summaries"
   add_foreign_key "summary_users", "summaries"
   add_foreign_key "summary_users", "users"

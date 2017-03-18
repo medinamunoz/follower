@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Department.destroy_all
+Establishment.destroy_all
+City.destroy_all
+
+cities = City.create([{name:"Copiapó"}, {name:"Vallenar"}, {name:"Huasco"}, {name:"Chañaral"}, {name:"Diego de Almagro"}])
+
+
+
+
+establishments = Establishment.create([{name: "Hospital de Copiapó", city: cities[0]}, {name: "Dirección del Servicio de Salud", city: cities[0]}])
+
+Department.create(name: "Informática", establishment: establishments[1]) 
+Department.create(name: "Finazas", establishment: establishments[1])
+Department.create(name: "Jurídica", establishment: establishments[1])
+Department.create(name: "Estadísticas", establishment: establishments[1])
+
+Department.create(name: "Informática", establishment: establishments[0]) 
+Department.create(name: "Finazas", establishment: establishments[0])
+Department.create(name: "Jurídica", establishment: establishments[0])
+Department.create(name: "Estadísticas", establishment: establishments[0])

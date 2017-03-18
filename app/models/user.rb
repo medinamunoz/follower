@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- 	belongs_to :department
- 	has_many :summary_users
- 	has_many :summaries, through: :summary_users
+	belongs_to :department
+	has_many :summary_users
+	has_many :summaries, through: :summary_users
+
+	delegate :name, to: :department, prefix: true, allow_nil: true
 end

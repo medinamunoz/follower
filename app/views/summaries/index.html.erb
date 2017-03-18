@@ -34,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Summary', new_summary_path %>
+<% if @can_create %>
+  <%= link_to 'New Summary', new_summary_path %>
+<% end %>
