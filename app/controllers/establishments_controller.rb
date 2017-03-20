@@ -1,5 +1,7 @@
 class EstablishmentsController < ApplicationController
   before_action :set_establishment, only: [:show, :edit, :update, :destroy]
+  
+
 
   # GET /establishments
   # GET /establishments.json

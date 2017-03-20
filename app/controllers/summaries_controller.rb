@@ -1,11 +1,13 @@
 class SummariesController < ApplicationController
   before_action :set_summary, only: [:show, :edit, :update, :destroy]
+  
+  load_and_authorize_resource
 
   # GET /summaries
   # GET /summaries.json
   def index
     @summaries = Summary.all
-    @can_create = current_user.try(:department_name) == "Jurídica"
+   
   end
 
   # GET /summaries/1
@@ -28,6 +30,7 @@ class SummariesController < ApplicationController
   # POST /summaries.json
   def create
     @summary = Summary.new(summary_params)
+    @summary.user = current_user
 
     respond_to do |format|
       if @summary.save

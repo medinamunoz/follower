@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -26,6 +27,7 @@
   <strong>Close day:</strong>
   <%= @summary.close_day %>
 </p>
-
-<%= link_to 'Edit', edit_summary_path(@summary) %> |
+<% if can? :edit, Summary %>
+  <%= link_to 'Edit', edit_summary_path(@summary) %> |
+<% end %>
 <%= link_to 'Back', summaries_path %>
