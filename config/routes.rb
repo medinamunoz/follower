@@ -3,7 +3,10 @@ devise_for :users, controllers: {
         registrations: 'users/registrations'
       	}
   resources :documents
-  resources :summaries
+  resources :summaries do
+  		resources :summary_phases
+  end
+
   resources :departments
   resources :establishments
   root 'summaries#index'
