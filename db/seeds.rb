@@ -39,3 +39,5 @@ Phase.create(name: "Etapa Informativa al Jefe Superior")
 Phase.create(name: "Etapa Resolutiva")
 Phase.create(name: "Etapa de Reclamación")
 Phase.create(name: "Finalizado")
+
+AdminUser.create!(email: 'admin@admin.com', password: '123456', password_confirmation: '123456')
