@@ -8,5 +8,5 @@ class User < ApplicationRecord
 	has_many :summary_users
 	has_many :summaries, through: :summary_users
 
-	enum role: [:gest, :user, :fiscal, :admin]
+	enum role: [:guest, :user, :fiscal, :admin]
 end

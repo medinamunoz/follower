@@ -13,32 +13,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %>
+    <%= f.label :Descripción %>
     <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Resolución %>
+    <%= f.number_field :resolution %>
+  </div>
+
+
+
+
+  <div class="field">
+    <%= f.label :phases_ids, "Fases" %><br>
+    <%= collection_check_boxes(:summary, :phases_ids, Phase.all, :id, :name) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :Incio %>
+    <%= f.datetime_select :starting_day %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Termino %>
+    <%= f.datetime_select :close_day %>
   </div>
 
   <div class="field">
     <%= f.label :note %>
     <%= f.text_area :note %>
   </div>
-
-  <div class="field">
-    <%= f.label :resolution %>
-    <%= f.number_field :resolution %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :starting_day %>
-    <%= f.datetime_select :starting_day %>
-  </div>
-
-  <div class="field">
-    <%= f.label :close_day %>
-    <%= f.datetime_select :close_day %>
-  </div>
-
-  
 
 
 

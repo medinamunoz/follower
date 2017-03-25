@@ -15,7 +15,13 @@
   <strong>Resolution:</strong>
   <%= @summary.resolution %>
 </p>
-
+<h2>Fase</h2>
+<ul>
+    <% @summary.phases.each do |phase| %>
+      <li><%= phase.name %> <span class="badge info"> <%= link_to "x", delete_phase_summary_path(@summary, phase_id: phase.id) %> </span>
+      </li>
+    <% end %>
+</ul>
 
 
 <p>
@@ -27,7 +33,10 @@
   <strong>Close day:</strong>
   <%= @summary.close_day %>
 </p>
-<% if can? :edit, Summary %>
+
+
+
+<% if can? :edit, @summary %>
   <%= link_to 'Edit', edit_summary_path(@summary) %> |
 <% end %>
 <%= link_to 'Back', summaries_path %>

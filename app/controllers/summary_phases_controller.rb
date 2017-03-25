@@ -1,6 +1,7 @@
 class SummaryPhasesController < ApplicationController
   before_action :set_summary_phase, only: [:show, :edit, :update, :destroy]
 
+
   # GET /summary_phases
   # GET /summary_phases.json
   def index
@@ -19,7 +20,7 @@ class SummaryPhasesController < ApplicationController
 
   # GET /summary_phases/1/edit
   def edit
-    @summary_phase = SummaryPhase.find(params[:id]
+    @summary_phase = SummaryPhase.find(params[:id])
 
   end
 

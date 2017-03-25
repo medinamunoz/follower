@@ -15,7 +15,7 @@
     <% @departments.each do |department| %>
       <tr>
         <td><%= department.name %></td>
-        <td><%= department.establishment %></td>
+        <td><%= department.establishment.name %></td>
         <td><%= link_to 'Show', department %></td>
         <td><%= link_to 'Edit', edit_department_path(department) %></td>
         <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,5 +25,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Department', new_department_path %>
+<% if @can_create %>
+  <%= link_to 'New Department', new_department_path %>
+<% end %>

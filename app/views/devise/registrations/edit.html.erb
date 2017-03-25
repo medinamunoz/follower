@@ -43,11 +43,9 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="field">
-                <%= f.label :Departamento %>
-                <%= f.collection_select :department_id, Department.all, :id, :name %>
-              </div>
+            <div class="field">
+              <%= f.label :department_id, "Departamento" %><br />
+              <%= f.grouped_collection_select :department_id, Establishment.order(:name), :departments, :name, :id, :name, include_blank: "Seleccione un departamento" %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

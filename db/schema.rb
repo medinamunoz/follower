@@ -64,9 +64,10 @@ ActiveRecord::Schema.define(version: 20170319143119) do
 
   create_table "summary_phases", force: :cascade do |t|
     t.integer  "summary_id"
+    t.integer  "phase_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "phase"
+    t.index ["phase_id"], name: "index_summary_phases_on_phase_id", using: :btree
     t.index ["summary_id"], name: "index_summary_phases_on_summary_id", using: :btree
   end
 
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170319143119) do
   add_foreign_key "departments", "establishments"
   add_foreign_key "documents", "summary_phases"
   add_foreign_key "establishments", "cities"
+  add_foreign_key "summary_phases", "phases"
   add_foreign_key "summary_phases", "summaries"
   add_foreign_key "summary_users", "summaries"
   add_foreign_key "summary_users", "users"
