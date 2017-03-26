@@ -33,13 +33,14 @@ class SummariesController < ApplicationController
   # POST /summaries.json
   def create
     @summary = Summary.new(summary_params)
-    @phases = Phase.find(@summary_params[:phases_ids].delete_if{ |x| x.empty?})
+    @phases = Phase.find(summary_params[:phases_ids].delete_if{ |x| x.empty?})
     @summary.phases << @phases
 
     
 
     respond_to do |format|
       if @summary.save
+        UserMailer.welcome().deliver_now()
         format.html { redirect_to @summary, notice: 'Summary was successfully created.' }
         format.json { render :show, status: :created, location: @summary }
       else

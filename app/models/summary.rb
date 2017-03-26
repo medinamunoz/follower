@@ -6,4 +6,9 @@ class Summary < ApplicationRecord
 
  	attr_accessor :phases_ids
 
+ 	def nueva_categoria
+ 		UserMailer.welcome(current_user.admin, self).deliver_now
+ 		
+ 	end
+
 end
