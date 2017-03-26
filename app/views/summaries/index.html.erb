@@ -45,6 +45,8 @@
                   <td><%= link_to 'Destroy', summary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
               <% end %>
+              <%= paginate @summaries %>
+
             </tbody>
           </table>
 

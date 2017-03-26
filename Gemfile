@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'railroady' #para diagramar la BBDD / For Diagraming the BBDD
 gem 'cancancan' #para hacer roles 
+gem 'kaminari' #for paginating 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
