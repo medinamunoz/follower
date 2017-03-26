@@ -1,52 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">  
+      <div class="well">
 
-<h1>Sumarios</h1>
+          <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Resolution</th>
-      <th>Fase</th>
-      <th>Note</th>
-      <th>Starting day</th>
-      <th>Close day</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+          <h1>Sumarios</h1>
 
-  <tbody>
-    <% @summaries.each do |summary| %>
-      <tr>
-        <td><%= summary.description %></td>
-        <td><%= summary.resolution %></td>
-        <td>
-          <ul class="nav">
-            <% summary.phases.each do |phase| %>
-              <li>
-                <%= phase.name %> <span class="badge info"> <%= link_to "x", delete_phase_summary_path(summary, phase_id: phase.id) %> </span>
-              </li>
-            <% end %>
-          </ul>
-        </td>
-        
-        <td><%= summary.note %></td>
-        <td><%= summary.starting_day %></td>
-        <td><%= summary.close_day %></td>
-        <td><%= link_to 'Show', summary %></td>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Resolución</th>
+                <th>Fase</th>
+          <!--       <th>Note</th>
+                <th>Starting day</th>
+                <th>Close day</th> -->
+                <th colspan="5"></th>
+              </tr>
+            </thead>
 
-        <td><%= link_to 'Edit', edit_summary_path(summary) %></td>
+            <tbody>
+              <% @summaries.each do |summary| %>
+                <tr>
+                  <td ><%= summary.description %></td>
+                  <td><%= summary.resolution %></td>
+                  <td>
+                    <ul class="nav">
+                      <% summary.phases.each do |phase| %>
+                        <li>
+                          <%= phase.name %> <span class="badge info"> <%= link_to "x", delete_phase_summary_path(summary, phase_id: phase.id) %> </span>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </td>
+                  
+                  <!-- <td><%= summary.note %></td>
+                  <td><%= summary.starting_day %></td>
+                  <td><%= summary.close_day %></td> -->
+                  <td><%= link_to 'Show', summary %></td>
 
+                  <td><%= link_to 'Edit', edit_summary_path(summary) %></td>
 
+                  <td><%= link_to 'Destroy', summary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-        <td><%= link_to 'Destroy', summary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <br>
 
-<br>
+          <% if can? :create, Summary %>
+            <%= link_to 'New Summary', new_summary_path %>
+          <% end %>
 
-<% if can? :create, Summary %>
-  <%= link_to 'New Summary', new_summary_path %>
-<% end %>
+          </div>
+      </div>
+    </div>
+</div>
